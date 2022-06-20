@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 500px;
+        }
+        .img-list{
+            width: 500px;
+            height: 470px;
+            list-style: none;
+            margin: 0 auto;
+            position: relative;
+        }
+        .img-list li{
+            position: absolute;
+        }
+        .point{
+            position: absolute;
+            z-index: 99;
+            bottom: 5px;
+        }
+        .point a{
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255,255,255,.3);
+            border-radius: 50%;
+            margin-left: 15px;
+            background-clip: content-box;
+            border: 2px solid transparent;
+        }
+        .point a.active,.point a:hover{
+            background-color: #fff;
+            border: 2px solid rgba(255,255,255,.3);
+        }
+
+    </style>
+</head>
+<body>
+<ul class="img-list">
+    <li><a href="#"><img src="lbt2.jpg"></a> </li>
+    <div class="point">
+        <a class="active" href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+</ul>
+</body>
+</html>

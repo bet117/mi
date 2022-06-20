@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.news{
+			width:300px;
+			height: 300px;
+			margin: 20px auto;
+			background-color: darkcyan;
+			border-top:3px black solid;
+		}
+		.news .tittle{
+			margin: 0px;
+			display: inline;
+			background-color: lightblue;
+			border-top:3px red solid;
+		}
+		.img{
+			height: 80px;
+		}
+		.img .img-tittle{
+			margin-top: -10px;
+		}
+		ul{
+			font-size: 18px;
+			margin-left: 0px;
+			padding-left: 0px;
+			list-style: none;
+		}
+		ul li{
+			margin-bottom: 17px;
+		}
+		ul li::before{
+			content:"◾";
+			padding-right: 5px;
+		}
+
+	</style>
+
+</head>
+<body>
+<div class="news">
+	<h2 class="tittle">新闻专题</h2>
+	<div class="img">
+		<img src="1.jpg">
+		<h2 class="img-tittle">全国两会</h2>
+	</div>
+	<div class="news-ul">
+		<ul>
+			<li>2022北京冬奥会</li>
+			<li>2022春节春运</li>
+			<li>神十三航天员太空过新年</li>
+			<li>奥密克戎已成全球优势流行株</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

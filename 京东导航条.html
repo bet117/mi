@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./iconfonts/css/all.css">
+    <style>
+        .clearfix::before,
+        .clearfix::after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .top-bar-wrapper{
+            width: 100%;
+            background-color: #E3E4E5;
+            line-height:30px;
+            height: 30px;
+            border-bottom: 1px #ddd solid;
+        }
+        .top-bar-wrapper ul ,
+        .top-bar-wrapper a{
+            text-decoration: none;
+            list-style: none;
+        }
+        .top-bar{
+            position: relative;
+            width: 1190px;
+            margin: 0 auto;
+
+        }
+        .location{
+            float: left;
+        }
+        .current-city .fas{
+            color: #ff253a;
+        }
+        .current-city{
+            border-bottom: none;
+            position: relative;
+            padding-bottom: 2px;
+            z-index: 1;
+        }
+        .current-city:hover{
+            background-color: white;
+            border: 1px solid rgb(204,204,204);
+            border-bottom: none;
+        }
+        .location .city-list{
+            width: 320px;
+            height: 436px;
+            display: none;
+            background-color: white;
+            border: 1px solid rgb(204,204,204);
+            box-shadow: 0 0 5px rgba(0,0,0,.2);
+            border-top: none;
+            position: absolute;
+            top: 31px;
+        }
+        .location:hover .city-list,
+        .location:hover .current-city
+        {
+            display: block;
+            background-color: white;
+        }
+        .shortcut{
+            float: right;
+        }
+        .shortcut .line{
+            width: 1px;
+            height: 20px;
+            background-color: silver;
+            margin: 4px 10px;
+        }
+        .shortcut li{
+            float: left;
+
+        }
+        .shortcut a{
+            display: inline-block;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar-wrapper clearfix">
+    <div class="top-bar">
+        <div class="location">
+            <div class="current-city">
+                <i class="fas fa-map-marked-alt"></i>
+                <a href="#">北京</a>
+            </div>
+            <div class="city-list"></div>
+        </div>
+        <ul class="shortcut clearfix">
+            <li>
+                <a href="#">你好，请登录</a>
+                <a href="#">免费注册</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#">我的订单</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#">我的京东</a>
+                <i class="fas fa-angle-down"></i>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#">京东会员</a>
+            </li>
+            <li class="line"></li>
+            <li>
+                <a href="#">企业采购</a>
+                <i class="fas fa-angle-down"></i>
+            </li>
+            <li class="line"></li>
+            <li>
+                <span>客户服务</span>
+                <i class="fas fa-angle-down"></i>
+            </li>
+            <li class="line"></li>
+            <li>
+                <span>网站导航</span>
+                <i class="fas fa-angle-down"></i>
+            </li>
+            <li class="line"></li>
+            <li>
+                <span>手机京东</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

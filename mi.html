@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米商城练习</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="./iconfonts/css/all.css">
+    <link rel="icon" href="img/favicon.ico">
+    <style>
+        body{
+            min-width: 1226px;
+        }
+        .top-bar-wrapper{
+            width: 100%;
+            height: 40px;
+            background-color: #333;
+        }
+        .top-bar{
+            width: 1226px;
+            line-height: 40px;
+            margin: 0 auto;
+        }
+        .top-bar a{
+            display: block;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        .top-bar a:hover{
+            color: white;
+        }
+        .top-bar .service{
+            float: left;
+        }
+        .top-bar .service li{
+            float: left;
+        }
+        .top-bar .user-info{
+            float: right;
+        }
+        .top-bar .user-info li{
+            float: left;
+        }
+        .line{
+            color: #424242;
+            margin: 0 8px;
+        }
+        .app{
+            position: relative;
+        }
+        .app:hover .app-download,
+        .app:hover::after{
+            height: 148px;
+            display: block;
+        }
+        .app::after{
+            position: absolute;
+            content: '';
+            width: 0px;
+            height: 0px;
+            border: 8px white solid;
+            border-top: none;
+            border-color: transparent transparent white transparent;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            margin: auto;
+            display: none;
+        }
+        .app-download{
+            position: absolute;
+            text-align: center;
+            width: 124px;
+            /*height: 148px;*/
+            height: 0;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
+            left: -40px;
+            transition: height 1s;
+            z-index: 10;
+        }
+        .app-download img{
+            display: block;
+            height: 90px;
+            margin: 10px auto 0;
+        }
+        .app-download>span{
+            color: black;
+        }
+        .app-download:hover>span{
+            color: black;
+        }
+        .user-info .shop-car{
+            width: 120px;
+            text-align: center;
+            margin-left: 25px;
+            background-color: #424242;
+        }
+        .shop-car{
+            position: relative;
+        }
+        .shop-car:hover a{
+            background-color: white;
+            color: #ff6700;
+        }
+        .shop-car:hover .car-out{
+            height: 148px;
+        }
+        .shop-car .car-out{
+            font-size: 14px;
+            height: 0;
+            position: absolute;
+            width: 400px;
+            background-color: silver;
+            right: 0;
+            overflow: hidden;
+            transition: height 1s;
+            text-align: center;
+            line-height: 148px;
+            z-index: 10;
+        }
+        .header-wrapper{
+            width: 100%;
+            position: relative;
+        }
+        .header{
+            width: 1226px;
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .logo{
+            float: left;
+            margin-top: 22px;
+            position: relative;
+            height: 55px;
+            width: 55px;
+            overflow: hidden;
+        }
+        .logo .home{
+            background-image: url("img/home-logo.png");
+            left: -55px;
+        }
+        .logo a{
+            height: 55px;
+            width: 55px;
+            position: absolute;
+            background-image: url("img/mi1-logo.png");
+            background-position: center;
+            left: 0;
+            transition: left 0.3s;
+        }
+        .logo:hover .home{
+            left: 0;
+        }
+        .logo:hover .mi{
+            left: -55px;
+        }
+        .nav-wrapper{
+            float: left;
+            margin-left: 7px;
+        }
+        .nav-wrapper li{
+            float: left;
+            padding-left: 20px;
+            line-height: 100px;
+        }
+        .nav-wrapper a:hover{
+            color: #ff6700;
+        }
+        .nav-wrapper li a{
+            font-size: 18px;
+            color: black;
+            display: block;
+        }
+        .nav .show-goods:hover ~ .show,
+        .nav-wrapper .show:hover{
+            height: 228px;
+            border: 1px solid rgb(224,224,224);
+            box-shadow: 0px 5px 3px rgba(0,0,0,.2);
+        }
+        .first-li{
+            text-indent: 58px;
+            visibility: hidden;
+        }
+        .first-li .left-list-div{
+            width: 234px;
+            height: 460px;
+            background-color: rgba(0,0,0,.6);
+            position: absolute;
+            visibility: visible;
+            z-index: 10;
+            padding: 0;
+            left: 0;
+        }
+        .left-list-div .left-list li{
+            padding: 0;
+        }
+        .left-list-div .left-list a{
+            display: block;
+            width: 234px;
+            height: 42px;
+            line-height: 42px;
+            font-size: 14px;
+            color: white;
+        }
+        .left-list-div .left-list{
+            margin: 20px auto;
+        }
+        .left-list i{
+            float: right;
+            line-height: 42px;
+            padding-right: 20px;
+        }
+        .left-list-div .left-list a:hover{
+            color: white;
+            background-color: #ff6700;
+        }
+        .show{
+            width: 1226px;
+            height: 0;
+            position: absolute;
+            background-color: white;
+            left: 0;
+            top: 100px;
+            transition: height 0.3s;
+            z-index: 99;
+        }
+        .select-wrapper{
+            float: right;
+            margin-top: 25px;
+            width: 294px;
+        }
+        .select .select-in{
+            box-sizing: border-box;
+            float: left;
+            height: 50px;
+            width: 242px;
+            padding: 0 10px;
+            outline: none;
+            border: 1px solid rgb(224,224,224);
+        }
+        .select .select-in:focus,
+        .select .select-in:focus ~ .select-bt
+        {
+            border: 1px solid #ff6700;
+        }
+        .select .select-bt{
+            float: left;
+            width: 51px;
+            height: 50px;
+            font-size: 16px;
+            border: 1px solid rgb(224,224,224);
+            border-left: none;
+            padding: 0;
+            color: #616161;
+            background-color: #fff;
+        }
+        .select .select-bt:hover{
+            background-color: #ff6700;
+            color: white;
+        }
+        .img-list-wrapper{
+            width: 100%;
+        }
+        .img-list-wrapper .img-list{
+            width: 1226px;
+            height: 460px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .img-list li{
+            position: absolute;
+        }
+        .img-list .img-before,
+        .img-list .img-after{
+            width: 41px;
+            height: 69px;
+            position: absolute;
+        }
+        .img-list .img-before{
+            left: 234px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            background-image: url("img/change.png");
+            background-position: -84px;
+        }
+        .img-list .img-before:hover{
+            background-position: 0;
+        }
+        .img-list .img-after{
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            background-image: url("img/change.png");
+            background-position: -125px;
+        }
+        .img-list .img-after:hover{
+            background-position: -42px;
+        }
+        .img-list .pointer{
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+        }
+        .img-list li{
+            float: left;
+        }
+        .img-list .pointer{
+            position: absolute;
+        }
+        .img-list .pointer .pointer-a{
+            float: left;
+            margin-left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: silver;
+            border: 3px solid rgba(0,0,0,.2);
+        }
+        .img-list .pointer a:hover{
+            background-color: rgba(0,0,0,.2);
+            border: 3px solid silver;
+        }
+        .aside{
+            width: 80px;
+            height: 200px;
+            background-color: #ff6700;
+            position: fixed;
+            left: 50%;
+            margin-left: 613px;
+        }
+        .footer{
+            width: 1226px;
+            height: 170px;
+            margin: 14px auto;
+        }
+        .footer .footer-div{
+            width: 234px;
+            height: 170px;
+            background-color: #5f5750;
+            position: relative;
+        }
+        .footer-div .last-list a{
+            display: block;
+            line-height: 85px;
+            text-align: center;
+            color: #cfccca;
+        }
+        .footer-div .last-list i{
+            display: block;
+            text-align: center;
+            margin-bottom: -15px;
+            margin-top: 10px;
+        }
+        .footer-div .last-list li{
+            width: 76px;
+        }
+        .footer-div .last-list li::before{
+            content: '';
+            width: 66px;
+            height: 1px;
+            background-color: white;
+            display: block;
+            position: absolute;
+            top: 2px;
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+        .footer-div .last-list li::after{
+            content: '';
+            width: 1px;
+            height: 60px;
+            background-color: white;
+            display: block;
+            position: absolute;
+            bottom: 15px;
+            left: 2px;
+        }
+        .footer-img ul{
+            float: left;
+        }
+        .footer-img li{
+            float: left;
+            margin: 0 auto;
+            position: relative;
+        }
+        .footer-img img{
+            height: 170px;
+            margin-left: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar-wrapper">
+    <div class="top-bar">
+        <ul class="service">
+            <li><a href="#">小米商城</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">MIUI</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">LOT</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">云服务</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">金融</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">有品</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">小爱开放平台</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">企业团购</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">资质证照</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">协议规则</a> </li>
+            <li class="line">|</li>
+            <li>
+                <a class="app" href="#">下载app
+                    <div class="app-download">
+                        <img src="mi.png">
+                        <span>小米商城APP</span>
+                    </div>
+                </a>
+            </li>
+            <li class="line">|</li>
+            <li><a href="#">Select location</a> </li>
+        </ul>
+        <ul class="user-info">
+            <li><a href="#">登录</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">注册</a> </li>
+            <li class="line">|</li>
+            <li><a href="#">消息通知</a> </li>
+            <li class="shop-car">
+                <a href="#">
+                    <i class="fas fa-cart-shopping"></i>
+                    购物车(0)
+                </a>
+                <div class="car-out">
+                    您的购物车为空
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="header-wrapper">
+        <div class="header">
+        <div class="logo">
+            <a class="mi" href=""></a>
+            <a class="home" href=""></a>
+        </div>
+        <div class="nav-wrapper">
+            <ul class="nav">
+                <li class="first-li">
+                    <a href="#">全部商品分类</a>
+                    <div class="left-list-div">
+                        <ul class="left-list">
+                        <li>
+                            <a href="#">
+                            手机 电话卡
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            电视 盒子
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            笔记本 平板
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            家电 插线板
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            出行 穿戴
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                智能 路由器
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                电源 配件
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                健康 儿童
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                耳机 音响
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                生活 箱包
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                     </div>
+                </li>
+                <li class="show-goods"><a href="#">小米手机</a> </li>
+                <li class="show-goods"><a href="#">Redmi红米</a> </li>
+                <li class="show-goods"><a href="#">电视</a> </li>
+                <li class="show-goods"><a href="#">笔记本</a> </li>
+                <li class="show-goods"><a href="#">平板</a> </li>
+                <li class="show-goods"><a href="#">家电</a> </li>
+                <li class="show-goods"><a href="#">路由器</a> </li>
+                <li><a href="#">服务</a> </li>
+                <li><a href="#">社区</a> </li>
+                <div class="show"></div>
+            </ul>
+        </div>
+        <div class="select-wrapper">
+            <form class="select">
+                <input class="select-in" type="text">
+                <button class="select-bt">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+    <div class="img-list-wrapper">
+        <ul class="img-list">
+            <li><img src="img/imglist1.jpg"></li>
+            <li><img src="img/imglist2.jpg"></li>
+            <div class="img-before"></div>
+            <div class="img-after"></div>
+            <ul class="pointer">
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+                <a class="pointer-a" href="#"></a>
+            </ul>
+        </ul>
+    </div>
+    <div class="aside"></div>
+    <div class="footer">
+        <ul class="footer-img">
+            <li class="footer-div">
+                <ul class="last-list">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-clock"></i>
+                            小米秒杀
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-building"></i>
+                            企业团购
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-frog"></i>
+                            F码通道
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-robot"></i>
+                            米粉卡
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-keyboard"></i>
+                            以旧换新
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-clock"></i>
+                            话费充值
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li><img src="img/bottomjpg1.jpg"></li>
+            <li><img src="img/bottomjpg2.jpg"></li>
+            <li><img src="img/bottomjpg3.jpg"></li>
+        </ul>
+    </div>
+</body>
+</html>
